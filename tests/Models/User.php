@@ -1,19 +1,23 @@
 <?php
 
 namespace prdp543\PasswordNotification\tests\Models;
-use prdp543\PasswordNotification\Traits\PassworChangedNotificationTrait;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Backpack\CRUD\app\Models\Traits\CrudTrait; // <------------------------------- this one
-use Spatie\Permission\Traits\HasRoles;// <---------------------- and this one
-use prdp543\PasswordNotification\Contracts\PassworChangedNotificationContract;
+use prdp543\PasswordNotification\Contracts\PassworChangedNotificationContract; // <------------------------------- this one
+use prdp543\PasswordNotification\Traits\PassworChangedNotificationTrait;// <---------------------- and this one
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable implements PassworChangedNotificationContract
 {
-    use HasApiTokens, HasFactory, Notifiable,PassworChangedNotificationTrait;
-	 use CrudTrait; // <----- this
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+    use PassworChangedNotificationTrait;
+    use CrudTrait; // <----- this
     use HasRoles; // <------ and this
     /**
      * The attributes that are mass assignable.
@@ -44,5 +48,4 @@ class User extends Authenticatable implements PassworChangedNotificationContract
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
 }

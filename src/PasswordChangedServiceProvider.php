@@ -2,9 +2,6 @@
 
 namespace prdp543\PasswordNotification;
 
-
-
-
 class PasswordChangedServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
@@ -18,7 +15,5 @@ class PasswordChangedServiceProvider extends PackageServiceProvider
             ->name('password-notification')
 
             ->hasViews();
-
     }
 }
- 
