@@ -64,5 +64,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+	"repositories":[
+	{
+	"type" :"path",
+	"url" :"C:/wamp64/www/password-notification"
+	}
+	]
 }

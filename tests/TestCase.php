@@ -1,11 +1,10 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace prdp543\PasswordNotification\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
-
+use prdp543\PasswordNotification\PasswordChangedServiceProvider;
 class TestCase extends Orchestra
 {
     protected function setUp(): void
@@ -13,14 +12,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'prdp\\PasswordNotification\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            PasswordChangedServiceProvider::class,
         ];
     }
 
@@ -28,9 +27,9 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
+        
+        $migration = include __DIR__.'/../database/migrations/create_user_table.php.stub';
         $migration->up();
-        */
+        
     }
 }
